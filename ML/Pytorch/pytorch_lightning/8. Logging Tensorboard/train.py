@@ -26,8 +26,9 @@ if __name__ == "__main__":
         devices=config.DEVICES,
         min_epochs=1,
         max_epochs=config.NUM_EPOCHS,
-        precision=config.PRECISION,
         callbacks=[MyPrintingCallback(), EarlyStopping(monitor="val_loss")],
+        log_every_n_steps=1,
+        val_check_interval=1
     )
     trainer.fit(model, dm)
     trainer.validate(model, dm)
